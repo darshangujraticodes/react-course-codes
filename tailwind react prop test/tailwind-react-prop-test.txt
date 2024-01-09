@@ -1,0 +1,3 @@
+Here in this project we have learn the following pointer 
+1] integrating TailwindCSS with Vite reactJs
+2] How to create component and declare property for dynamic operation
