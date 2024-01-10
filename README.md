@@ -12,4 +12,3 @@
   -> how to uses Component Properties ?
 
 3] BG Color change
- 
