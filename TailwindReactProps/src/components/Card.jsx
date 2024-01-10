@@ -47,3 +47,4 @@ function Card( { cardHead,cardBody,btnText='Click to Know More !' } ) {
 }
 
 export default Card
+

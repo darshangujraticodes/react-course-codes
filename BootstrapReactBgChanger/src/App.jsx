@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import PasswordGenerator from './components/PasswordGenerator';
+
 
 function App() {
 
@@ -21,7 +20,7 @@ function App() {
   < >
     <div 
         className='text-center' 
-        style={ { backgroundColor:color, width:'100%', height:'1000px'  } }
+        style={ { backgroundColor:color, width:'100%', height:'600px'  } }
         >
       
       <h1 className='pt-5'>React BG Changer Project with Bootstrap CSS</h1>
@@ -39,9 +38,19 @@ function App() {
               style={ { backgroundColor:'#5C636A' } } 
               onClick={ () => setColor('#5C636A') }  >Gray Button</a>
 
+        <a href="#" className='btn btn-secondary mx-2' 
+              style={ { backgroundColor:'#f5f5f5', color:'#000' } } 
+              onClick={ () => setColor('#f5f5f5') }  >Lavender Button</a>
+
       </div>
-    </div>
+
+      <div className='password-wrapper ' >
+        <PasswordGenerator  />
+      </div>
      
+
+    </div>
+
   </>
 
   )
