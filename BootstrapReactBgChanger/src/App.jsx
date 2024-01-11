@@ -2,6 +2,9 @@ import { useState } from "react";
 import PasswordGenerator from "./components/PasswordGenerator";
 import StopWatch from "./components/StopWatch";
 import ReactjsLessons from "./components/ReactjsLessons";
+import csTechtubeLogo from "./assets/cs.png";
+import userAPI from "./JsonApiData.json";
+import "./JsonStyle.css";
 
 function App() {
   let [color, setColor] = useState("#f5f5f5");
@@ -80,10 +83,10 @@ function App() {
 
         <div className="reactlesson-wrapper">
           <div className="rect-props container">
-            <h3 className="text-center">ReactJS Component Properties</h3>
+            <h3 className="text-center mb-4">ReactJS Lesson's</h3>
             <div className="row">
               <div className="col-md-4">
-                <h5 className="text-center">Student Info</h5>
+                <h5 className="text-center mb-4">React Component Properties</h5>
                 <ReactjsLessons studName="Harry" studDream="CA" />
                 <hr className="my-3" />
                 <ReactjsLessons
@@ -94,7 +97,30 @@ function App() {
                   hscCompleted
                 />
               </div>
-              <div className="col-md-4"></div>
+              <div className="col-md-4 image-wrapper">
+                <h5 className="text-center mb-4">Import External CSS Styles</h5>
+                <div className=" ">
+                  <img
+                    className="logoImage"
+                    src={csTechtubeLogo}
+                    alt="CS Techtube Logo"
+                  />
+                </div>
+                <h5 className="mt-3">Import Image File</h5>
+              </div>
+              <div className="col-md-4">
+                <div className="json-data-wrapper">
+                  <h5 className="text-center mb-4">Importing JSON API Data</h5>
+                  <ul className="text-start fw-semibold">
+                    <li>Employee ID : {JSON.stringify(userAPI.id)} </li>
+                    <li>Employee Name : {JSON.stringify(userAPI.name)} </li>
+                    <li>Education : {JSON.stringify(userAPI.education)} </li>
+                    <li>Bio : {JSON.stringify(userAPI.bio)} </li>
+                    <li>IsMarried : {JSON.stringify(userAPI.isMarried)} </li>
+                    <li>Location : {JSON.stringify(userAPI.location)} </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
