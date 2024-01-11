@@ -7,7 +7,7 @@
 -> Bootstrap Integration
 
 2] Tailwind CSS integration and Component Properties  
- -> How to integrate tailwind css ?
+-> How to integrate tailwind css ?
 -> how to create react Components ?
 -> how to uses Component Properties ?
 
