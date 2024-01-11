@@ -11,7 +11,10 @@
 -> how to create react Components ?
 -> how to uses Component Properties ?
 
-3] BG Color change
+3] Bootstrap BG Color Change Project
 -> Collaboration of 3 project (Background color changer, Password Generator, StopWatch Timer)
 -> Learning are Bootstrap integration, Hooks like, useState(), useRef(), UseEffect() and useCallback()
 -> Bootstrap CSS Refreshments
+-> ReactJs Lesson all feature practical implementation individualy uptill now covered (component, props)
+
+Note: In Bootstrap BGColorChange Project also creating all React Lesson's component to implement all react hooks, funadamental and other implementation individually manner to know more in depth functioing of that particular react function and feature.

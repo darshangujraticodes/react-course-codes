@@ -79,10 +79,10 @@ function App() {
         <hr className="my-4" />
 
         <div className="reactlesson-wrapper">
-          <div className="container">
+          <div className="rect-props container">
             <h3 className="text-center">ReactJS Component Properties</h3>
             <div className="row">
-              <div className="col-md-6 ">
+              <div className="col-md-4">
                 <h5 className="text-center">Student Info</h5>
                 <ReactjsLessons studName="Harry" studDream="CA" />
                 <hr className="my-3" />
@@ -94,7 +94,7 @@ function App() {
                   hscCompleted
                 />
               </div>
-              <div className="col-md-6"></div>
+              <div className="col-md-4"></div>
             </div>
           </div>
         </div>
