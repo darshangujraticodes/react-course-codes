@@ -1,4 +1,4 @@
-# Here I will share all my Reactjs Learning along with all small project practise Files
+# Here I will share all my Reactjs Learning along with all Small Project Practise Files
 1] React Number Counter
   -> How to build react app ?
   -> Create number counter
