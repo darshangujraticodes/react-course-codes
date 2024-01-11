@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PasswordGenerator from './components/PasswordGenerator';
+import StopWatch from './components/StopWatch';
 
 
 function App() {
@@ -20,11 +21,11 @@ function App() {
   < >
     <div 
         className='text-center' 
-        style={ { backgroundColor:color, width:'100%', height:'600px'  } }
+        style={ { backgroundColor:color, width:'100%', height:'900px'  } }
         >
       
       <h1 className='pt-5'>React BG Changer Project with Bootstrap CSS</h1>
-      <div className='my-4'>
+      <div className=''>
         <a href="#" className='btn btn-primary mx-2' 
               onClick={setBlue} >Blue Button</a>
 
@@ -44,10 +45,17 @@ function App() {
 
       </div>
 
+      <hr />
+
       <div className='password-wrapper ' >
         <PasswordGenerator  />
       </div>
+
+      <hr />
      
+     <div className='stopwatch-wrapper my-4'>
+        <StopWatch />
+     </div>
 
     </div>
 

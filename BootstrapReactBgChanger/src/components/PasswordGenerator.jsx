@@ -42,6 +42,8 @@ function PasswordGenerator(){
     function copyPassword(){
         window.navigator.clipboard.writeText(password)
         passwordRef.current?.select();
+        // selection range help us to copy range of data we want to select on clipboard
+        // window.navigator.current?.setSelectionRange(0,30)
         alert('Password Copied !!')
     }
 
