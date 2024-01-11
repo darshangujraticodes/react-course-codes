@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PasswordGenerator from "./components/PasswordGenerator";
 import StopWatch from "./components/StopWatch";
+import ReactjsLessons from "./components/ReactjsLessons";
 
 function App() {
   let [color, setColor] = useState("#f5f5f5");
@@ -17,7 +18,7 @@ function App() {
     <>
       <div
         className="text-center"
-        style={{ backgroundColor: color, width: "100%", height: "900px" }}
+        style={{ backgroundColor: color, width: "100%", height: "100%" }}
       >
         <div className=" bgchanger-wrapper">
           <h1 className="pt-5">React BG Changer Project with Bootstrap CSS</h1>
@@ -76,6 +77,27 @@ function App() {
         </div>
 
         <hr className="my-4" />
+
+        <div className="reactlesson-wrapper">
+          <div className="container">
+            <h3 className="text-center">ReactJS Component Properties</h3>
+            <div className="row">
+              <div className="col-md-6 ">
+                <h5 className="text-center">Student Info</h5>
+                <ReactjsLessons studName="Harry" studDream="CA" />
+                <hr className="my-3" />
+                <ReactjsLessons
+                  studName="Harmione"
+                  studStream="Science"
+                  studDream="Doctor"
+                  // note if boolean prop value is not passed by default it will set to true
+                  hscCompleted
+                />
+              </div>
+              <div className="col-md-6"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
