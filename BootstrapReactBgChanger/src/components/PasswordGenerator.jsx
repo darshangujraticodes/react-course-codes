@@ -55,7 +55,7 @@ function PasswordGenerator() {
       <div className="row">
         <div className="col-md-3"></div>
         <div className="col-md-6">
-          <div class="input-group mb-3 w-10">
+          <div className="input-group mb-3 w-10">
             <input
               type="text"
               readOnly
@@ -94,9 +94,9 @@ function PasswordGenerator() {
               id="customRange1"
             />
           </div>
-          <div class="input-group mb-3 justify-content-center">
-            <div class="input-group-prepend d-flex ">
-              <div class="input-group-text mx-2">
+          <div className="input-group mb-3 justify-content-center">
+            <div className="input-group-prepend d-flex ">
+              <div className="input-group-text mx-2">
                 <input
                   type="checkbox"
                   defaultChecked={numAllowed}
@@ -112,7 +112,7 @@ function PasswordGenerator() {
                 <label htmlFor="numberText">Numbers</label>
               </div>
 
-              <div class="input-group-text mx-2">
+              <div className="input-group-text mx-2">
                 <input
                   type="checkbox"
                   defaultChecked={symbAllowed}

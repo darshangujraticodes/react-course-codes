@@ -1,9 +1,61 @@
 {
   "id": "WDFD22332",
-  "name": "Harry",
+  "name": "Rohit Mehra",
   "education": "MBA",
   "age": 30,
   "bio": "Website developer, content creator, Teacher and Mentor",
   "isMarried": false,
-  "location": "Mumbai, India"
+  "location": "Mumbai, India",
+
+  "developer": [
+    {
+      "empid": "DEV456",
+      "name": "Harry Potter",
+      "skill": "Frontend React Developer",
+      "experience": 2,
+      "ismarried": false
+    },
+
+    {
+      "empid": "DEV123",
+      "name": "Ron Weasly",
+      "skill": "Android App Developer",
+      "experience": 5,
+      "ismarried": false
+    },
+
+    {
+      "empid": "DEV789",
+      "name": "Harmoine Granger",
+      "skill": "Full Stack Developer",
+      "experience": 7,
+      "ismarried": true
+    }
+  ],
+
+  "designer": [
+    {
+      "empid": "DES123",
+      "name": "Ferrini John",
+      "skill": "UI UX Designer",
+      "experience": 5,
+      "ismarried": false
+    },
+
+    {
+      "empid": "DES456",
+      "name": "Rohan Singh",
+      "skill": "Logo Designer",
+      "experience": 3,
+      "ismarried": false
+    },
+
+    {
+      "empid": "DES789",
+      "name": "Vishal",
+      "skill": "Figma Designer",
+      "experience": 2,
+      "ismarried": false
+    }
+  ]
 }
