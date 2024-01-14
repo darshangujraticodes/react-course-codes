@@ -18,7 +18,7 @@ Fetching API Data has Industry Protocols shared in pointer below !!
 6] Else we throw error message
 7] After converting data in json it is set to apidata variable setState()
 8] After that the error which has thrown in signal is catch and set in error variable using setError() state
-9] 
+9] Finally will help to terminate importing data from API and and set loading to false.
 
 
 
