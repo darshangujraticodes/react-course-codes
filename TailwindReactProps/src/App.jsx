@@ -2,15 +2,16 @@ import Card from "./components/Card";
 import Footer from "./components/footer";
 import Header from "./components/Header";
 import "./App.css";
+import TailwindPractise from "./components/TailwindPractise";
 
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
 
-      <h1 className="py-5">Tailwind CSS with React Component Props</h1>
+      {/* <h1 className="py-5">Tailwind CSS with React Component Props</h1> */}
 
-      <div className="grid grid-cols-3 gap-4 py-5">
+      {/* <div className="grid grid-cols-3 gap-4 py-5">
         <Card
           cardHead="Learn HTML & CSS"
           cardBody="HTML & CSS is the backbone of web content, providing structure 
@@ -30,9 +31,11 @@ function App() {
           cardBody="ReactJS empowers and enhancing user experience 
             with its dynamic and efficient component-based architecture."
         />
-      </div>
+      </div> */}
 
-      <Footer />
+      <TailwindPractise />
+
+      {/* <Footer /> */}
     </>
   );
 }

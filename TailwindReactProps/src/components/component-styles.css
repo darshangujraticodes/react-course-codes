@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use heroicons and feathericons to icon in svg  */
+
+/* Common CSS */
+
+.navbar-property {
+  @apply w-full flex justify-between sticky top-0 z-30;
+}
+
+.img-fluid {
+  @apply max-w-full h-auto;
+}
+
+.container-section {
+  @apply container mx-auto;
+}
+
+.scale-animate {
+  @apply transition duration-300 hover:scale-95;
+}
+
+.responsive-gridcol3 {
+  @apply grid md:grid-cols-3 grid-cols-1 gap-4;
+}
+
+.responsive-gridcol2 {
+  @apply grid md:grid-cols-2 grid-cols-1 gap-4;
+}
+
+.section-padding {
+  @apply py-8  md:py-16;
+}
+
+.section-margin {
+  @apply my-8  md:my-16;
+}
+
+.web-toggle-btn {
+  @apply text-5xl text-white bg-purple-600 p-0 m-0 rounded-sm cursor-pointer;
+}
+
+/* Website Based Declaration */
+
+.web-color-btn {
+  @apply bg-purple-600 font-semibold text-white px-5 py-4 border-4  
+         border-white  rounded-lg hover:border-purple-600 hover:border-4 hover:bg-white hover:text-zinc-950;
+}
+
+.web-outline-btn {
+  @apply bg-white font-semibold text-zinc-950 px-9 py-3 border-4 
+         hover:border-white border-purple-600  rounded-lg hover:bg-purple-600 hover:text-white;
+}
+
+.h1-property {
+  @apply lg:text-7xl md:text-5xl  text-4xl font-semibold font-sans;
+}
+
+.h2-property {
+  @apply md:text-5xl text-3xl font-semibold font-sans;
+}
+
+.p-property {
+  @apply text-lg md:text-xl font-sans font-medium text-justify;
+}
+
+.icon-btn {
+  @apply hover:border-purple-600 hover:border-4 hover:bg-white 
+         hover:text-zinc-950 bg-purple-600 font-semibold text-white
+         border-4 border-white rounded-lg px-2 py-3 flex justify-center;
+}
