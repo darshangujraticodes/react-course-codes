@@ -36,7 +36,9 @@ function FetchApiData() {
           <ul>
             {apiData != null &&
               apiData.map((user) => {
-                return <UserData key={user.id} name={user.name} />;
+                // return <UserData key={user.id} name={user.name} />;
+                // spread operator another use case
+                return <UserData key={user.id} {...user} />;
               })}
           </ul>
         )}
