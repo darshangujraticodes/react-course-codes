@@ -30,12 +30,16 @@ function FetchApiData() {
     <div className="fetchapi-data-section section-padding px-3 ">
       <div className="container-section">
         <h3>Fetch User Data from API </h3>
-        <ul>
-          {apiData != null &&
-            apiData.map((user) => {
-              return <UserData key={user.id} name={user.name} />;
-            })}
-        </ul>
+        {isLoading ? (
+          <h4>Loading...</h4>
+        ) : (
+          <ul>
+            {apiData != null &&
+              apiData.map((user) => {
+                return <UserData key={user.id} name={user.name} />;
+              })}
+          </ul>
+        )}
       </div>
     </div>
   );
