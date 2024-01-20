@@ -3,6 +3,7 @@ import Footer from "./components/footer";
 import Header from "./components/Header";
 import "./App.css";
 import TailwindPractise from "./components/TailwindPractise";
+import FetchApiData from "./components/FetchApiData";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       </div> */}
 
       <TailwindPractise />
+      <FetchApiData />
 
       {/* <Footer /> */}
     </>
