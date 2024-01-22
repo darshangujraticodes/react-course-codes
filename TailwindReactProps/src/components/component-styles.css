@@ -55,15 +55,15 @@
 }
 
 .h1-property {
-  @apply lg:text-7xl md:text-5xl  text-4xl font-semibold font-sans;
+  @apply lg:text-7xl md:text-5xl  text-4xl font-semibold;
 }
 
 .h2-property {
-  @apply md:text-5xl text-3xl font-semibold font-sans;
+  @apply md:text-5xl text-3xl font-semibold;
 }
 
 .p-property {
-  @apply text-lg md:text-xl font-sans font-medium text-justify;
+  @apply text-lg md:text-xl font-medium text-justify;
 }
 
 .icon-btn {

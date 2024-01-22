@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import "./App.css";
 import TailwindPractise from "./components/TailwindPractise";
 import FetchApiData from "./components/FetchApiData";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -34,8 +35,11 @@ function App() {
         />
       </div> */}
 
-      <TailwindPractise />
-      <FetchApiData />
+      {/* <TailwindPractise />
+      <FetchApiData /> */}
+      <div className="bg-background">
+        <Navbar />
+      </div>
 
       {/* <Footer /> */}
     </>
