@@ -3,26 +3,29 @@ import InputBox from "./Components/InputBox";
 import useCurrencyInfo from "./Hooks/useCurrencyInfo";
 
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
-  const [convertedAmount, setConvertedAmount] = useState(0);
+  const [convertedAmount, setConvertedAmount] = useState();
 
   // custom hooks
   const currencyInfo = useCurrencyInfo(from);
 
   const options = Object.keys(currencyInfo);
-  console.log(options, currencyInfo);
+  // console.log(options, currencyInfo);
 
   const swap = () => {
+    console.log("swap btn click");
     setFrom(to);
     setTo(from);
-    setConvertedAmount(amount);
-    setAmount(convertedAmount);
+    // setConvertedAmount(amount);
+    // setAmount(convertedAmount);
   };
 
   const convertCurrency = () => {
+    console.log("convert btn Click");
     setConvertedAmount(amount * currencyInfo[to]);
+    console.log(amount, convertedAmount);
   };
 
   return (
@@ -46,13 +49,14 @@ function App() {
                 amount={amount}
                 selectedCurrency={from}
                 currencyOptions={options}
-                onCurrencyChange={(crr) => setAmount(amount)}
+                onCurrencyChange={(curr) => setAmount(curr)}
+                onAmountChange={(amount) => setAmount(amount)}
               />
             </div>
             <div className="relative w-full h-0.5">
               <button
                 type="button"
-                onClick={convertCurrency}
+                onClick={swap}
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
               >
                 swap
@@ -64,14 +68,15 @@ function App() {
                 amount={convertedAmount}
                 selectedCurrency={to}
                 currencyOptions={options}
-                onCurrencyChange={(currencyInfo) => setAmount(amount)}
+                onCurrencyChange={(amount) => setTo(amount)}
+                amountDisabled
               />
             </div>
             <button
               type="submit"
               className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
             >
-              Convert from {from} to {to}.
+              Convert from {from.toUpperCase()} to {to.toUpperCase()}.
             </button>
           </form>
         </div>

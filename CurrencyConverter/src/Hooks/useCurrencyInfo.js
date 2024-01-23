@@ -12,12 +12,11 @@ function useCurrencyInfo(currency) {
 
   useEffect(() => {
     fetch(
-      `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`,
-      apiSignal
+      `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`
     )
       .then((res) => res.json())
       .then((apiInfo) => setData(apiInfo[currency]));
-    console.log(data, apiSignal);
+    // console.log(data, apiSignal);
   }, [currency]);
   return data;
 }
