@@ -3,10 +3,10 @@ import InputBox from "./Components/InputBox";
 import useCurrencyInfo from "./Hooks/useCurrencyInfo";
 
 function App() {
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState("");
   const [from, setFrom] = useState("usd");
   const [to, setTo] = useState("inr");
-  const [convertedAmount, setConvertedAmount] = useState();
+  const [convertedAmount, setConvertedAmount] = useState(0);
 
   // custom hooks
   const currencyInfo = useCurrencyInfo(from);
@@ -18,8 +18,8 @@ function App() {
     console.log("swap btn click");
     setFrom(to);
     setTo(from);
-    // setConvertedAmount(amount);
-    // setAmount(convertedAmount);
+    setConvertedAmount(amount);
+    setAmount(convertedAmount);
   };
 
   const convertCurrency = () => {
