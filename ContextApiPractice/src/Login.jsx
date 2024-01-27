@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../Context/UserContext";
+import UserContext from "./Context/UserContext";
 
 // In this login we we will fetch tha data and send the data through context api
 // Created context data is fetch through useContext() hook
 
-function UserLogin() {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,14 +12,11 @@ function UserLogin() {
   // kindly first check does it is wrapped under context provide in app.jsx
   // otherwise will give error of cannot destructure propertt in useContext() hook
 
-  //   const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
-  //   console.log(setUser.username);
-
-  const handleClick = (e) => {
-    // e.preventDefault();
-    alert("btn click");
-    // setUser({ username, password });
+  const handleClick = () => {
+    // alert("btn Click !!");
+    setUser({ username, password });
   };
 
   return (
@@ -62,4 +59,4 @@ function UserLogin() {
   );
 }
 
-export default UserLogin;
+export default Login;
