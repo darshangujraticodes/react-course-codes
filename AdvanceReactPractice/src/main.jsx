@@ -6,7 +6,6 @@ import "./index.css";
 import {
   Route,
   RouterProvider,
-  Routes,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
@@ -15,14 +14,19 @@ import HomeBody from "./Components/HomeBody.jsx";
 import ServiceSection from "./Components/ServiceSection.jsx";
 import AboutUs from "./Components/AboutUs.jsx";
 import FetchUrlData from "./Components/FetchUrlData.jsx";
+import Layout from "./Layout.jsx";
+import UserLogin from "./Components/UserLogin.jsx";
+import UserContextProvider from "./Context/UserContextProvider.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<Layout />}>
       <Route path="" element={<HomeBody />} />
       <Route path="aboutus" element={<AboutUs />} />
       <Route path="services" element={<ServiceSection />} />
       <Route path="contactus" element={<ContactUs />} />
+      <Route path="login" element={<UserLogin />} />
+
       <Route path="fetchdata/:userdata" element={<FetchUrlData />} />
     </Route>
   )

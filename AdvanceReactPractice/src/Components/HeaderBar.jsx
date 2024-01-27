@@ -40,7 +40,7 @@ function HeaderBar() {
                     About Us
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink
                     to="/services"
                     className={({ isActive }) =>
@@ -53,8 +53,8 @@ function HeaderBar() {
                   >
                     Our Services
                   </NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <NavLink
                     to="/contactus"
                     className={({ isActive }) =>
@@ -66,6 +66,23 @@ function HeaderBar() {
                     }
                   >
                     Contact Us
+                  </NavLink>
+                </li> */}
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      ` ${
+                        isActive
+                          ? " bg-purple-700 py-3 px-3 rounded-lg text-white "
+                          : "text-white py-3 px-3"
+                      }  mx-4  font-semibold `
+                    }
+                  >
+                    <span className="mr-2">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                    Sign In
                   </NavLink>
                 </li>
               </ul>

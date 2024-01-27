@@ -1,9 +1,8 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
 import FooterBar from "./Components/FooterBar";
 import HeaderBar from "./Components/HeaderBar";
+import Layout from "./Layout";
 import "./index.css";
-
-import { Outlet } from "react-router-dom";
 
 function App() {
   return (
