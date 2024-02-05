@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../Context/UserContext";
 
 // In this login we we will fetch tha data and send the data through context api
 // Created context data is fetch through useContext() hook

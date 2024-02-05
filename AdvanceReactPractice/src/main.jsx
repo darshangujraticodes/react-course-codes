@@ -16,7 +16,9 @@ import AboutUs from "./Components/AboutUs.jsx";
 import FetchUrlData from "./Components/FetchUrlData.jsx";
 import Layout from "./Layout.jsx";
 import UserLogin from "./Components/UserLogin.jsx";
-import UserContextProvider from "./Context/UserContextProvider.jsx";
+import AddTodo from "./Components/AddTodo.jsx";
+import { Provider } from "react-redux";
+import { store } from "./app/Store.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="services" element={<ServiceSection />} />
       <Route path="contactus" element={<ContactUs />} />
       <Route path="login" element={<UserLogin />} />
+      <Route path="addtodo" element={<AddTodo />} />
 
       <Route path="fetchdata/:userdata" element={<FetchUrlData />} />
     </Route>
@@ -34,6 +37,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

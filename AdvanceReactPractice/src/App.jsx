@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import FooterBar from "./Components/FooterBar";
 import HeaderBar from "./Components/HeaderBar";
-import Layout from "./Layout";
 import "./index.css";
+
+// in this I have practice react router dom and react-redux
 
 function App() {
   return (

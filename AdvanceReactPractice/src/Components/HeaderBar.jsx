@@ -85,6 +85,23 @@ function HeaderBar() {
                     Sign In
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/addtodo"
+                    className={({ isActive }) =>
+                      ` ${
+                        isActive
+                          ? " bg-purple-700 py-3 px-3 rounded-lg text-white "
+                          : "text-white py-3 px-3"
+                      }  mx-4  font-semibold `
+                    }
+                  >
+                    <span className="mr-2">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                    </span>
+                    Add Todo
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </nav>
