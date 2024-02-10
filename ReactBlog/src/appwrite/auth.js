@@ -36,7 +36,7 @@ export class AuthService {
 
   async login({ email, password }) {
     try {
-      const userLogin = this.account.createEmailSession(email, password);
+      const userLogin = await this.account.createEmailSession(email, password);
       return userLogin;
     } catch (error) {
       console.log("Appwrite Service :: login() :: error", error);
@@ -47,8 +47,7 @@ export class AuthService {
   // this function will help you to find whether the user is login or not
   async getCurrentUser() {
     try {
-      const loggedUser = this.account.get();
-      return loggedUser;
+      return await this.account.get();
     } catch (error) {
       console.log("Appwrite Service :: getCurrentUser() :: error", error);
       throw error;
