@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 function ReactHookForm() {
   const {
@@ -12,6 +13,7 @@ function ReactHookForm() {
 
   const onsubmit = async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
+    toast.success("Submitted Successfully");
 
     reset();
   };

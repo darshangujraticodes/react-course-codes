@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.firebase-form .inputBox {
+  @apply bg-white text-xl border-2 px-3 py-2 rounded-md my-2;
+}
+
+.firebase-form .input-wrap {
+  @apply bg-white text-lg my-2 border-2 rounded-md py-2 px-3;
+}
+
+label {
+  @apply bg-transparent;
+}
+
+.submit-btn {
+  @apply bg-[#7E22CE] text-white text-xl py-2 font-semibold rounded-md;
+}

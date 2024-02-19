@@ -2,26 +2,31 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./../node_modules/bootstrap/dist/js/bootstrap.bundle";
+
+// Note along with library also import toastify css
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import SimpleForm from "./components/SimpleForm.jsx";
-import ReactHookForm from "./components/ReactHookForm.jsx";
-import HomeBody from "./components/HomeBody.jsx";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import FirebaseForm from "./components/FirebaseForm.jsx";
+import FirebaseCrud from "./pages/FirebaseCrud.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="" element={<HomeBody />} />
-      <Route path="simple-form" element={<SimpleForm />} />
-      <Route path="react-hook-form" element={<ReactHookForm />} />
-      <Route path="firebase-form" element={<FirebaseForm />} />
+      <Route path="" element={<HomePage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
+      <Route path="firebase-crud" element={<FirebaseCrud />} />
     </Route>
   )
 );
@@ -31,7 +36,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
     <ToastContainer
       position="top-center"
-      autoClose={3000}
+      autoClose={5000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick

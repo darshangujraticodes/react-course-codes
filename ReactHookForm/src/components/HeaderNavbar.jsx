@@ -16,6 +16,9 @@ function HeaderNavbar() {
             <li className="mx-3">
               <NavLink to="/react-hook-form">react Hook Form</NavLink>
             </li>
+            <li className="mx-3">
+              <NavLink to="/firebase-form">Firebase Form</NavLink>
+            </li>
           </ul>
         </nav>
       </div>
