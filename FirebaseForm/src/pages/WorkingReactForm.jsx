@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function HomePage() {
+function WorkingReactForm() {
   const [formData, setFormData] = useState({
     email: "",
     gender: "",
@@ -81,7 +81,6 @@ function HomePage() {
                     value="male"
                     id="maleCheckbox"
                     onChange={onChangeHandler}
-                    checked={formData.gender == "male"}
                   />
                   <label
                     className="form-check-label fs-4"
@@ -92,7 +91,6 @@ function HomePage() {
                 </div>
                 <div className="form-check">
                   <input
-                    checked={formData.gender == "female"}
                     onChange={onChangeHandler}
                     className="form-check-input"
                     type="radio"
@@ -270,4 +268,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default WorkingReactForm;

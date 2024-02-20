@@ -20,6 +20,14 @@ function HeaderBar() {
       <NavLink to="/register" className="menu-link">
         Register
       </NavLink>
+
+      <NavLink to="/working-form" className="menu-link">
+        Working Form
+      </NavLink>
+
+      <NavLink to="/reacthook-form" className="menu-link">
+        React Hook Form Practice
+      </NavLink>
     </div>
   );
 }

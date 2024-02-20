@@ -1,15 +1,19 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 
-function HomePage() {
-  const [formData, setFormData] = useState({
+function ReactHookFormPractice() {
+  const initialState = {
     email: "",
     gender: "",
     stream: "Science",
     age: 18,
     date: "",
     sports: [],
-  });
+  };
+
+  const resetRef = useRef();
+
+  const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState(false);
 
   const onChangeHandler = (e) => {
     if (e.target.name === "sports") {
@@ -29,19 +33,33 @@ function HomePage() {
     }
   };
 
+  const resetForm = () => {
+    console.log("Reset Form");
+    setFormData(initialState);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(formData);
+    try {
+      setErrors(false);
 
-    const inputDate = formData.date;
-    // console.log("inputdate", inputDate);
-    const convDate = new Date(inputDate).getDate();
-    const convMonth = new Date(inputDate).getMonth() + 1;
-    const convYear = new Date(inputDate).getFullYear();
-    console.log(`${convDate}/${convMonth}/${convYear} `);
+      const inputDate = formData.date;
+      const convDate = new Date(inputDate).getDate();
+      const convMonth = new Date(inputDate).getMonth() + 1;
+      const convYear = new Date(inputDate).getFullYear();
+      console.log(`${convDate}/${convMonth}/${convYear} `);
 
-    // console.log("Selected sports", selectedSports);
-    console.log("Final Form Data", formData);
+      console.log("OnSubmit Final Form Data", formData);
+
+      if (!errors) {
+        resetForm();
+      }
+    } catch (errors) {
+      setErrors(true);
+      console.log("Unable to Submit Data !!");
+    } finally {
+      setErrors(false);
+    }
   };
 
   return (
@@ -53,7 +71,7 @@ function HomePage() {
         >
           <h1 className="mt-4 text-center">React Form Handling</h1>
           <div className="mt-4">
-            <form action="">
+            <form onSubmit={submitHandler}>
               <div className="mb-3">
                 <label htmlFor="emailInput" className="fs-4 fw-bold form-label">
                   Enter Student Email
@@ -63,7 +81,6 @@ function HomePage() {
                   value={formData.email}
                   onChange={onChangeHandler}
                   type="email"
-                  required
                   className="form-control fs-5"
                   id="emailInput"
                   placeholder="sample@gmail.com"
@@ -134,6 +151,7 @@ function HomePage() {
                   </label>
                   <input
                     required
+                    value={formData.date}
                     type="date"
                     className="form-control fs-5"
                     name="date"
@@ -190,6 +208,7 @@ function HomePage() {
                           value="chess"
                           id="chessInput"
                           onChange={onChangeHandler}
+                          checked={formData.sports.indexOf("chess") !== -1}
                         />
                         <label
                           className="fs-4 form-check-label"
@@ -206,6 +225,7 @@ function HomePage() {
                           value="cricket"
                           id="cricketInput"
                           onChange={onChangeHandler}
+                          checked={formData.sports.indexOf("cricket") !== -1}
                         />
                         <label
                           className="fs-4 form-check-label"
@@ -221,9 +241,10 @@ function HomePage() {
                           name="sports"
                           className="form-check-input "
                           type="checkbox"
-                          value="Football"
+                          value="football"
                           id="footballInput"
                           onChange={onChangeHandler}
+                          checked={formData.sports.indexOf("football") !== -1}
                         />
                         <label
                           className="fs-4 form-check-label"
@@ -237,9 +258,10 @@ function HomePage() {
                           name="sports"
                           className="form-check-input "
                           type="checkbox"
-                          value="Hockey"
+                          value="hockey"
                           id="hockeyInput"
                           onChange={onChangeHandler}
+                          checked={formData.sports.indexOf("hockey") !== -1}
                         />
                         <label
                           className="fs-4 form-check-label"
@@ -256,9 +278,15 @@ function HomePage() {
                   <button
                     className="btn btn-primary  fs-6 text-uppercase"
                     type="submit"
-                    onClick={submitHandler}
                   >
                     Submit
+                  </button>
+
+                  <button
+                    className="btn btn-primary mx-3 fs-6 text-uppercase"
+                    type="reset"
+                  >
+                    Reset
                   </button>
                 </div>
               </div>
@@ -270,4 +298,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default ReactHookFormPractice;

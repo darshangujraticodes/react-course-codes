@@ -19,6 +19,8 @@ import FirebaseCrud from "./pages/FirebaseCrud.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import WorkingReactForm from "./pages/WorkingReactForm.jsx";
+import ReactHookFormPractice from "./pages/ReactHookFormPractice.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="firebase-crud" element={<FirebaseCrud />} />
+      <Route path="working-form" element={<WorkingReactForm />} />
+      <Route path="reacthook-form" element={<ReactHookFormPractice />} />
     </Route>
   )
 );
