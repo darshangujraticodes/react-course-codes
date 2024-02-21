@@ -26,7 +26,11 @@ function HeaderBar() {
       </NavLink>
 
       <NavLink to="/reacthook-form" className="menu-link">
-        React Hook Form Practice
+        React Hook Form
+      </NavLink>
+
+      <NavLink to="/simple-form" className="menu-link">
+        Simple Form
       </NavLink>
     </div>
   );

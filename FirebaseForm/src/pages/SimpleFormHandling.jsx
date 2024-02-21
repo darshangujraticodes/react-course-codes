@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 // ReactHookForm is not us
 
-function ReactHookFormPractice() {
+function SimpleFormHandling() {
   const initialState = {
     email: "",
     gender: "",
@@ -80,6 +80,7 @@ function ReactHookFormPractice() {
                 </label>
                 <input
                   name="email"
+                  required
                   value={formData.email}
                   onChange={onChangeHandler}
                   type="email"
@@ -133,6 +134,7 @@ function ReactHookFormPractice() {
                   </label>
                   <select
                     required
+                    value={formData.stream}
                     onChange={onChangeHandler}
                     name="stream"
                     className="form-select fs-5"
@@ -300,4 +302,4 @@ function ReactHookFormPractice() {
   );
 }
 
-export default ReactHookFormPractice;
+export default SimpleFormHandling;
