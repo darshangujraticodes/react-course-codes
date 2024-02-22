@@ -12,6 +12,7 @@ function ReactHookFormPractice() {
     contact: "",
     dobDate: "",
     stream: "",
+    graduate: "",
   };
 
   const validationSchema = yup.object().shape({
@@ -45,6 +46,8 @@ function ReactHookFormPractice() {
       .string()
       .oneOf(["science", "commerce", "arts", "diploma"])
       .label("Course Stream"),
+
+    // graduate: yup.string(),
   });
 
   const {
@@ -96,25 +99,31 @@ function ReactHookFormPractice() {
           <div className="mt-4">
             <form onSubmit={handleSubmit(formSubmitHandler)}>
               <div className="mb-3">
-                <label htmlFor="emailInput" className="fs-4 fw-bold form-label">
-                  Enter Student Email
-                </label>
-                <input
-                  {...register("email")}
-                  name="email"
-                  value={formData.email}
-                  onChange={onChangeHandler}
-                  type="text"
-                  className="form-control fs-5"
-                  id="emailInput"
-                  placeholder="sample@gmail.com"
-                />
-                <p className="mt-2 mb-0">{errors.email?.message}</p>
-                {/* <ErrorMessage
+                <div className="email-wrap">
+                  <label
+                    htmlFor="emailInput"
+                    className="fs-4 fw-bold form-label"
+                  >
+                    Enter Student Email
+                  </label>
+                  <input
+                    {...register("email")}
+                    name="email"
+                    value={formData.email}
+                    onChange={onChangeHandler}
+                    type="text"
+                    className="form-control fs-5"
+                    id="emailInput"
+                    placeholder="sample@gmail.com"
+                  />
+
+                  <p className="mt-2 mb-0">{errors.email?.message}</p>
+                  {/* <ErrorMessage
                     errors={errors}
                     name={"email"}
                     render={(m) => <p>{m.message}</p>}
                   /> */}
+                </div>
 
                 <div className="password-wrap mt-3">
                   <label
@@ -222,9 +231,161 @@ function ReactHookFormPractice() {
                   <p className="mt-2 mb-0">{errors.stream?.message}</p>
                 </div>
 
-                <div className="departmentRadio-wrap">
+                <div className="departmentRadio-wrap mt-3">
                   <div className="row">
-                    <div className="col-3"></div>
+                    <label
+                      htmlFor="streamInput"
+                      className="fs-4 fw-bold form-label mt-3"
+                    >
+                      Select Bachelor Course
+                    </label>
+
+                    <div className="col-12 d-flex flex-wrap">
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bitgraduateInput"
+                          value="BSc IT"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          defaultChecked={formData.graduate == "BSc IT"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bitgraduateInput"
+                        >
+                          BSc IT
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bcomgraduateInput"
+                          value="BCom"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BCom"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bcomgraduateInput"
+                        >
+                          BCom
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bcsgraduateInput"
+                          value="BSc CS"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BSc CS"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bcsgraduateInput"
+                        >
+                          BSc CS
+                        </label>
+                      </div>
+                      <div className="mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bagraduateInput"
+                          value="BA"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BA"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bagraduateInput"
+                        >
+                          BA
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bafgraduateInput"
+                          value="BAF"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BAF"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bafgraduateInput"
+                        >
+                          BAF
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bmsgraduateInput"
+                          value="BMS"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BMS"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bmsgraduateInput"
+                        >
+                          BMS
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="llbgraduateInput"
+                          value="BA LLB"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                          checked={formData.graduate == "BA LLB"}
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="llbgraduateInput"
+                        >
+                          BA LLB
+                        </label>
+                      </div>
+                      <div className="form-check mx-3">
+                        <input
+                          {...register("graduate")}
+                          className="form-check-input "
+                          type="radio"
+                          id="bedgraduateInput"
+                          value="B.Ed"
+                          onChange={onChangeHandler}
+                          name="graduate"
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="bedgraduateInput"
+                        >
+                          B.Ed
+                        </label>
+                      </div>
+                      <p className="mt-2 mb-0">{errors.graduate?.message}</p>
+                    </div>
                   </div>
                 </div>
 
