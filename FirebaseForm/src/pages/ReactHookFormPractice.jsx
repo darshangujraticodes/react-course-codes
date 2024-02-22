@@ -12,7 +12,8 @@ function ReactHookFormPractice() {
     contact: "",
     dobDate: "",
     stream: "",
-    graduate: "",
+    graduate: "BSc IT",
+    skills: [],
   };
 
   const validationSchema = yup.object().shape({
@@ -48,6 +49,7 @@ function ReactHookFormPractice() {
       .label("Course Stream"),
 
     // graduate: yup.string(),
+    // skills: yup.array(),
   });
 
   const {
@@ -250,7 +252,7 @@ function ReactHookFormPractice() {
                           value="BSc IT"
                           onChange={onChangeHandler}
                           name="graduate"
-                          defaultChecked={formData.graduate == "BSc IT"}
+                          checked={formData.graduate == "BSc IT"}
                         />
                         <label
                           className="form-check-label fs-5"
@@ -295,60 +297,7 @@ function ReactHookFormPractice() {
                           BSc CS
                         </label>
                       </div>
-                      <div className="mx-3">
-                        <input
-                          {...register("graduate")}
-                          className="form-check-input "
-                          type="radio"
-                          id="bagraduateInput"
-                          value="BA"
-                          onChange={onChangeHandler}
-                          name="graduate"
-                          checked={formData.graduate == "BA"}
-                        />
-                        <label
-                          className="form-check-label fs-5"
-                          htmlFor="bagraduateInput"
-                        >
-                          BA
-                        </label>
-                      </div>
-                      <div className="form-check mx-3">
-                        <input
-                          {...register("graduate")}
-                          className="form-check-input "
-                          type="radio"
-                          id="bafgraduateInput"
-                          value="BAF"
-                          onChange={onChangeHandler}
-                          name="graduate"
-                          checked={formData.graduate == "BAF"}
-                        />
-                        <label
-                          className="form-check-label fs-5"
-                          htmlFor="bafgraduateInput"
-                        >
-                          BAF
-                        </label>
-                      </div>
-                      <div className="form-check mx-3">
-                        <input
-                          {...register("graduate")}
-                          className="form-check-input "
-                          type="radio"
-                          id="bmsgraduateInput"
-                          value="BMS"
-                          onChange={onChangeHandler}
-                          name="graduate"
-                          checked={formData.graduate == "BMS"}
-                        />
-                        <label
-                          className="form-check-label fs-5"
-                          htmlFor="bmsgraduateInput"
-                        >
-                          BMS
-                        </label>
-                      </div>
+
                       <div className="form-check mx-3">
                         <input
                           {...register("graduate")}
@@ -367,24 +316,85 @@ function ReactHookFormPractice() {
                           BA LLB
                         </label>
                       </div>
-                      <div className="form-check mx-3">
+
+                      <p className="mt-2 mb-0">{errors.graduate?.message}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="skills-wrap mt-3">
+                  <div className="row">
+                    <label
+                      htmlFor="dateInput"
+                      className=" fs-4 fw-bold form-label"
+                    >
+                      Select your Soft Skills
+                    </label>
+                    <div className="col-12 d-flex flex-wrap">
+                      <div className="form-check mx-2">
                         <input
-                          {...register("graduate")}
+                          type="checkbox"
+                          {...register("skills")}
                           className="form-check-input "
-                          type="radio"
-                          id="bedgraduateInput"
-                          value="B.Ed"
+                          value={"leadership"}
                           onChange={onChangeHandler}
-                          name="graduate"
+                          id="leaderskills"
                         />
                         <label
                           className="form-check-label fs-5"
-                          htmlFor="bedgraduateInput"
+                          htmlFor="leaderskills"
                         >
-                          B.Ed
+                          Leadership
                         </label>
                       </div>
-                      <p className="mt-2 mb-0">{errors.graduate?.message}</p>
+                      <div className="form-check mx-2">
+                        <input
+                          type="checkbox"
+                          {...register("skills")}
+                          className="form-check-input "
+                          value={"sales"}
+                          onChange={onChangeHandler}
+                          id="salesskills"
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="salesskills"
+                        >
+                          Sales
+                        </label>
+                      </div>
+                      <div className="form-check mx-2">
+                        <input
+                          type="checkbox"
+                          {...register("skills")}
+                          className="form-check-input "
+                          value={"influencer"}
+                          onChange={onChangeHandler}
+                          id="influenceskills"
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="influenceskills"
+                        >
+                          Influencer
+                        </label>
+                      </div>
+                      <div className="form-check mx-2">
+                        <input
+                          type="checkbox"
+                          {...register("skills")}
+                          className="form-check-input "
+                          value={"speaker"}
+                          onChange={onChangeHandler}
+                          id="speakerskills"
+                        />
+                        <label
+                          className="form-check-label fs-5"
+                          htmlFor="speakerskills"
+                        >
+                          Public Speaker
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
