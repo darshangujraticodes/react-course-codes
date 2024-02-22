@@ -288,7 +288,7 @@ function SimpleFormHandling() {
 
                   <button
                     className="btn btn-primary mx-3 fs-6 text-uppercase"
-                    type="reset"
+                    onClick={resetForm}
                   >
                     Reset
                   </button>

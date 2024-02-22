@@ -1,66 +1,87 @@
 import React, { useState, useRef } from "react";
-
-// ReactHookForm is not us
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { ErrorMessage } from "@hookform/error-message";
 
 function ReactHookFormPractice() {
   const initialState = {
     email: "",
-    gender: "",
-    stream: "Science",
-    age: 18,
-    date: "",
-    sports: [],
+    password: "",
+    confPassword: "",
+    contact: "",
+    dobDate: "",
+    stream: "",
   };
 
-  const resetRef = useRef();
+  const validationSchema = yup.object().shape({
+    email: yup
+      .string()
+      .required("Email is Required !")
+      .email("Invalid Email Address"),
+    // .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email (Invalid format)"),
+
+    password: yup
+      .string()
+      .required("Password  is Required !")
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+        "Password Must be AlphaNumeric with symbols"
+      ),
+
+    confPassword: yup
+      .string()
+      .required("Confirm Password is Required !")
+      .oneOf([yup.ref("password")], "Confirm Passwords has not match"),
+
+    contact: yup
+      .string()
+      .required("Contact Number is Required !")
+      .matches(/^[6-9]\d{9}$/, "Invalid Contact Number"),
+
+    dobDate: yup.string().required("Date of Birth is Required !"),
+
+    stream: yup
+      .string()
+      .oneOf(["science", "commerce", "arts", "diploma"])
+      .label("Course Stream"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
+      initialState,
+    },
+    resolver: yupResolver(validationSchema),
+  });
 
   const [formData, setFormData] = useState(initialState);
-  const [errors, setErrors] = useState(false);
 
   const onChangeHandler = (e) => {
-    if (e.target.name === "sports") {
-      let copy = { ...formData };
-      if (e.target.checked) {
-        copy.sports.push(e.target.value);
-      } else {
-        copy.sports = copy.sports.filter((val) => val !== e.target.value);
-      }
-      setFormData(copy);
-    } else {
-      console.log(e.target.value);
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    }
+    console.log(e.target.value);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const resetForm = () => {
-    console.log("Reset Form");
-    setFormData(initialState);
+  const onSelectHandler = (e) => {
+    console.log("selected value", e.target.value);
+    console.log(e.target.value);
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const formSubmitHandler = (e) => {
+    // e.preventDefault();
     try {
-      setErrors(false);
-
-      const inputDate = formData.date;
-      const convDate = new Date(inputDate).getDate();
-      const convMonth = new Date(inputDate).getMonth() + 1;
-      const convYear = new Date(inputDate).getFullYear();
-      console.log(`${convDate}/${convMonth}/${convYear} `);
-
-      console.log("OnSubmit Final Form Data", formData);
-
-      if (!errors) {
-        resetForm();
-      }
+      console.log("Final Form data", formData);
+      reset();
     } catch (errors) {
-      setErrors(true);
       console.log("Unable to Submit Data !!");
     } finally {
-      setErrors(false);
     }
   };
 
@@ -73,75 +94,85 @@ function ReactHookFormPractice() {
         >
           <h1 className="mt-4 text-center">React Form Handling</h1>
           <div className="mt-4">
-            <form onSubmit={submitHandler}>
+            <form onSubmit={handleSubmit(formSubmitHandler)}>
               <div className="mb-3">
                 <label htmlFor="emailInput" className="fs-4 fw-bold form-label">
                   Enter Student Email
                 </label>
                 <input
+                  {...register("email")}
                   name="email"
                   value={formData.email}
                   onChange={onChangeHandler}
-                  type="email"
+                  type="text"
                   className="form-control fs-5"
                   id="emailInput"
                   placeholder="sample@gmail.com"
                 />
+                <p className="mt-2 mb-0">{errors.email?.message}</p>
+                {/* <ErrorMessage
+                    errors={errors}
+                    name={"email"}
+                    render={(m) => <p>{m.message}</p>}
+                  /> */}
 
-                <label className=" mt-4 fs-4 fw-bold form-label">
-                  Select Gender
-                </label>
-                <div className="form-check">
-                  <input
-                    required
-                    className="form-check-input "
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    id="maleCheckbox"
-                    onChange={onChangeHandler}
-                    checked={formData.gender == "male"}
-                  />
+                <div className="password-wrap mt-3">
                   <label
-                    className="form-check-label fs-4"
-                    htmlFor="maleCheckbox"
+                    htmlFor="passwordInput"
+                    className="fs-4 fw-bold form-label"
                   >
-                    Male
+                    Enter Student Password
                   </label>
-                </div>
-                <div className="form-check">
                   <input
-                    checked={formData.gender == "female"}
+                    {...register("password")}
+                    autoComplete="on"
+                    name="password"
+                    value={formData.password}
                     onChange={onChangeHandler}
-                    className="form-check-input"
-                    type="radio"
-                    value="female"
-                    name="gender"
-                    id="femaleCheckbox"
+                    type="password"
+                    className="form-control fs-5"
+                    id="passwordInput"
+                    placeholder="Password@12345"
                   />
-                  <label
-                    className="form-check-label fs-4"
-                    htmlFor="femaleCheckbox"
-                  >
-                    Female
-                  </label>
-                </div>
+                  <p className="mt-2 mb-0">{errors.password?.message}</p>
 
-                <div className="select-wrap mt-4">
-                  <label className=" fs-4 fw-bold form-label">
-                    Select Stream
-                  </label>
-                  <select
-                    required
-                    onChange={onChangeHandler}
-                    name="stream"
-                    className="form-select fs-5"
-                    aria-label="Default select example"
+                  <label
+                    htmlFor="confPasswordInput"
+                    className="fs-4 fw-bold form-label mt-3"
                   >
-                    <option value="Science">Science</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Arts">Arts</option>
-                  </select>
+                    Confirm Student Password
+                  </label>
+                  <input
+                    {...register("confPassword")}
+                    value={formData.confPassword}
+                    onChange={onChangeHandler}
+                    name="confPassword"
+                    autoComplete="on"
+                    type="password"
+                    className="form-control fs-5"
+                    id="confPasswordInput"
+                    placeholder="It Should Match With Password"
+                  />
+                  <p className="mt-2 mb-0">{errors.confPassword?.message}</p>
+
+                  <label
+                    htmlFor="contactInput"
+                    className="fs-4 fw-bold form-label mt-3"
+                  >
+                    Contact Number
+                  </label>
+                  <input
+                    {...register("contact")}
+                    name="contact"
+                    value={formData.contact}
+                    autoComplete="on"
+                    type="number"
+                    className="form-control fs-5"
+                    id="contactdInput"
+                    placeholder="Enter your Phone Number"
+                    onChange={onChangeHandler}
+                  />
+                  <p className="mt-2 mb-0">{errors.contact?.message}</p>
                 </div>
 
                 <div className="date-wrap mt-4">
@@ -149,130 +180,51 @@ function ReactHookFormPractice() {
                     htmlFor="dateInput"
                     className=" fs-4 fw-bold form-label"
                   >
-                    Select Admission Date
+                    Select Date of Birth
                   </label>
                   <input
-                    required
-                    value={formData.date}
+                    {...register("dobDate")}
+                    value={formData.dobDate}
                     type="date"
                     className="form-control fs-5"
-                    name="date"
+                    name="dobDate"
                     id="dateInput"
                     onChange={onChangeHandler}
                   />
+                  <p className="mt-2 mb-0">{errors.dobDate?.message}</p>
                 </div>
 
-                <div className="range-wrap mt-4">
+                <div className="streamSelect-wrap">
                   <label
-                    htmlFor="ageInput"
-                    className=" fs-4 fw-bold form-label"
+                    htmlFor="streamInput"
+                    className="fs-4 fw-bold form-label mt-3"
                   >
-                    Select Student age
+                    Select Student Stream
                   </label>
-                  <br />
-                  <div className="d-flex">
-                    <div
-                      className="py-3 px-3 rounded"
-                      style={{ backgroundColor: "#fff", width: "80%" }}
-                    >
-                      <input
-                        required
-                        min="18"
-                        max="22"
-                        value={formData.age}
-                        type="range"
-                        className=" fs-5 w-100"
-                        name="age"
-                        id="ageInput"
-                        onChange={onChangeHandler}
-                      />
-                    </div>
-                    <div className="bg-white p-3 rounded mx-2 fs-4 fw-bold">
-                      <span className="text-black fs-5"> {formData.age}</span>
-                    </div>
-                  </div>
+                  {/* Special note if you will put onchange and value attribute before {...register} it won't functioning and will not show up any error  */}
+                  {/* Recommended way is to always put useform {...register} in the beginning of all attribute */}
+                  <select
+                    {...register("stream")}
+                    className="form-select fs-5"
+                    aria-label="Default select example"
+                    name="stream"
+                    id="streamInput"
+                    value={formData.stream}
+                    onChange={onChangeHandler}
+                  >
+                    <option value="">Course Options</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                    <option value="diploma">Diploma</option>
+                  </select>
+
+                  <p className="mt-2 mb-0">{errors.stream?.message}</p>
                 </div>
 
-                <div className="checkbox-wrap mt-4">
-                  <label
-                    htmlFor="checkboxInput"
-                    className=" fs-4 fw-bold form-label"
-                  >
-                    Select Student Sports
-                  </label>
+                <div className="departmentRadio-wrap">
                   <div className="row">
-                    <div className="col-4 px-3">
-                      <div className="form-check">
-                        <input
-                          name="sports"
-                          className="form-check-input "
-                          type="checkbox"
-                          value="chess"
-                          id="chessInput"
-                          onChange={onChangeHandler}
-                          checked={formData.sports.indexOf("chess") !== -1}
-                        />
-                        <label
-                          className="fs-4 form-check-label"
-                          htmlFor="chessInput"
-                        >
-                          Chess
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          name="sports"
-                          className="form-check-input "
-                          type="checkbox"
-                          value="cricket"
-                          id="cricketInput"
-                          onChange={onChangeHandler}
-                          checked={formData.sports.indexOf("cricket") !== -1}
-                        />
-                        <label
-                          className="fs-4 form-check-label"
-                          htmlFor="cricketInput"
-                        >
-                          Cricket
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-4 px-3">
-                      <div className="form-check">
-                        <input
-                          name="sports"
-                          className="form-check-input "
-                          type="checkbox"
-                          value="football"
-                          id="footballInput"
-                          onChange={onChangeHandler}
-                          checked={formData.sports.indexOf("football") !== -1}
-                        />
-                        <label
-                          className="fs-4 form-check-label"
-                          htmlFor="footballInput"
-                        >
-                          Football
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          name="sports"
-                          className="form-check-input "
-                          type="checkbox"
-                          value="hockey"
-                          id="hockeyInput"
-                          onChange={onChangeHandler}
-                          checked={formData.sports.indexOf("hockey") !== -1}
-                        />
-                        <label
-                          className="fs-4 form-check-label"
-                          htmlFor="hockeyInput"
-                        >
-                          Hockey
-                        </label>
-                      </div>
-                    </div>
+                    <div className="col-3"></div>
                   </div>
                 </div>
 
@@ -280,15 +232,9 @@ function ReactHookFormPractice() {
                   <button
                     className="btn btn-primary  fs-6 text-uppercase"
                     type="submit"
+                    onClick={() => reset()}
                   >
                     Submit
-                  </button>
-
-                  <button
-                    className="btn btn-primary mx-3 fs-6 text-uppercase"
-                    type="reset"
-                  >
-                    Reset
                   </button>
                 </div>
               </div>
