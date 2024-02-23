@@ -4,7 +4,7 @@ import UserContext from "./context/UserContext";
 function ContextProfile() {
   const { user } = useContext(UserContext);
 
-  if (!user.username) {
+  if (!user) {
     return <h3 className="mt-16 text-2xl ">Please Login ...</h3>;
   } else {
     return (
