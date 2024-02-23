@@ -17,6 +17,7 @@ import UseContextHook from "./UseContextHook.jsx";
 import UseCallbackHook from "./UseCallbackHook.jsx";
 import CustomHook from "./CustomHook.jsx";
 import HomePage from "./HomePage.jsx";
+import ContextLogin from "./ContextLogin.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,12 +31,11 @@ const router = createBrowserRouter(
       <Route path="useredux" element={<UseReduxHook />} />
       <Route path="useref" element={<UseRefHook />} />
       <Route path="customhook" element={<CustomHook />} />
+      <Route path="context-login" element={<ContextLogin />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );

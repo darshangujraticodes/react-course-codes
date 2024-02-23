@@ -32,6 +32,9 @@ function HeaderBar() {
               <li className="mx-2">
                 <NavLink to="/customhook">CustomHook</NavLink>
               </li>
+              <li className="mx-2">
+                <NavLink to="/context-login">Context Login</NavLink>
+              </li>
             </ul>
           </nav>
         </div>
