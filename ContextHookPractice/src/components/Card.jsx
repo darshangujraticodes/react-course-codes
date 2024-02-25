@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../context_Type1/UserContext";
 
 export default function Card() {
+  const { user } = useContext(UserContext);
+  // console.log("card user fetch : ", user.username);
   return (
     <div className="mt-5 w-full bg-white border border-gray-600 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="/">
@@ -64,6 +67,11 @@ export default function Card() {
           </svg>
           <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
             4.0
+          </span>
+        </div>
+        <div className="my-3 font-medium text-xl">
+          <span className="text-gray-900 dark:text-white">
+            Created By {user.username ? user.username : "Darshan"}
           </span>
         </div>
         <div className="flex items-center justify-between">
