@@ -7,6 +7,8 @@ import { ThemeContextProvider } from "./context_Type2/ThemeContext";
 import { TodoContextProvider } from "./ContextTodo/TodoContext";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
+import AddTodo from "./components/redux/AddTodo";
+import DisplayTodo from "./components/redux/DisplayTodo";
 
 function App() {
   // Quick Hack here we will fetch all object variables and function assign operation and it will automatically induced on context
@@ -127,6 +129,11 @@ function App() {
               </div>
             </div>
           </TodoContextProvider>
+
+          <div className="redux-wrap p-5 border-b-neutral-700 bg-slate-600 rounded text-center my-8 ">
+            <AddTodo />
+            <DisplayTodo />
+          </div>
         </div>
       </div>
     </>
