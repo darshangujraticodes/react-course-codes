@@ -1,9 +1,13 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
+import HeaderSection from "./components/HeaderSection";
+import FooterSection from "./components/FooterSection";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl">Vite + React</h1>
+      <HeaderSection />
+      <Outlet />
+      <FooterSection />
     </>
   );
 }
