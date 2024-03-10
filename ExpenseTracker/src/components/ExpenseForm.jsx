@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Inputfields from "./forms/Inputfields";
+import SelectField from "./forms/SelectField";
 
 function ExpenseForm({ setExpenses }) {
   const data = {};
@@ -8,6 +10,10 @@ function ExpenseForm({ setExpenses }) {
     category: "",
     price: "",
     status: "",
+    phone: "",
+    email: "",
+    password: "",
+    confpassword: "",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -40,7 +46,9 @@ function ExpenseForm({ setExpenses }) {
     // setFormData((prevstate) => console.log(prevstate));
 
     const validateResult = validateForm(formData);
-    console.log(validateResult);
+    console.log("validate result ", validateResult);
+
+    console.log("error key length", Object.keys(validateResult).length);
 
     if (Object.keys(validateResult).length) return;
 
@@ -48,6 +56,8 @@ function ExpenseForm({ setExpenses }) {
       ...prevState,
       { ...formData, id: crypto.randomUUID() },
     ]);
+
+    console.log("formdata =", formData);
 
     setFormData(initialState);
 
@@ -65,25 +75,16 @@ function ExpenseForm({ setExpenses }) {
         <main>
           <div className="expense-tracker">
             <form onSubmit={handleSubmit} className="expense-form">
-              <div className="input-container">
-                <label className="inputlabel" htmlFor="title">
-                  Title
-                </label>
-                <input
-                  id="title"
-                  value={formData.title}
-                  name="title"
-                  // onChange={(e) =>
-                  //   setFormData((prevState) => ({
-                  //     ...prevState,
-                  //     title: e.target.value,
-                  //   }))
-                  // }
-                  onChange={onChangeHandler}
-                />
-                <p className="errorDisplay">{formError.title}</p>
-              </div>
-              <div className="input-container">
+              <Inputfields
+                label="Title"
+                id="title"
+                name="title"
+                value={formData.title}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.title}
+              />
+
+              {/* <div className="input-container">
                 <label className="inputlabel" htmlFor="category">
                   Category
                 </label>
@@ -104,37 +105,78 @@ function ExpenseForm({ setExpenses }) {
                   <option value="Medicine">Medicine</option>
                 </select>
                 <p className="errorDisplay">{formError.category}</p>
-              </div>
-              <div className="input-container">
-                <label className="inputlabel" htmlFor="amount">
-                  Amount
-                </label>
-                <input
-                  id="amount"
-                  name="price"
-                  value={formData.price}
-                  onChange={onChangeHandler}
-                />
-                <p className="errorDisplay">{formError.price}</p>
-              </div>
-              <div className="input-container">
-                <label className="inputlabel mt-2" htmlFor="category">
-                  Select Expense Status (Paid, Unpaid or Both)
-                </label>
-                <select
-                  id="expensestatus"
-                  name="status"
-                  value={formData.status}
-                  onChange={onChangeHandler}
-                >
-                  <option value="" hidden>
-                    Select Status
-                  </option>
-                  <option value="Paid">Paid</option>
-                  <option value="Unpaid">Unpaid</option>
-                </select>
-                <p className="errorDisplay">{formError.status}</p>
-              </div>
+              </div> */}
+
+              <SelectField
+                label="Category"
+                id="category"
+                name="category"
+                value={formData.category}
+                onChangeHandle={onChangeHandler}
+                options={[
+                  "Grocery",
+                  "Education",
+                  "Bills",
+                  "Clothes",
+                  "Medicine",
+                ]}
+                errorMessg={formError.category}
+              />
+
+              <Inputfields
+                label="Amount"
+                id="amount"
+                name="price"
+                value={formData.price}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.price}
+              />
+
+              <SelectField
+                label="Status"
+                id="status"
+                name="status"
+                value={formData.status}
+                onChangeHandle={onChangeHandler}
+                options={["Paid", "Unpaid"]}
+                errorMessg={formError.status}
+              />
+
+              <Inputfields
+                label="Contact Number"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.phone}
+              />
+
+              <Inputfields
+                label="Email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.email}
+              />
+
+              <Inputfields
+                label="Password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.password}
+              />
+
+              <Inputfields
+                label="Confirm Password"
+                id="confpassword"
+                name="confpassword"
+                value={formData.confpassword}
+                onChangeHandle={onChangeHandler}
+                errorMessg={formError.confpassword}
+              />
 
               <button type="submit" className="add-btn">
                 Add

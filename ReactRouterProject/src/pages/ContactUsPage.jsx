@@ -12,7 +12,7 @@ function ContactUsPage() {
             onClick={() => navigateHook("/")}
             className=" bg-indigo-700 text-white rounded-lg text-2xl px-3 py-2  "
           >
-            Go to Home page
+            Click Go to Home page
           </button>
         </div>
       </div>
