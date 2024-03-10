@@ -31,7 +31,7 @@ function HeaderSection() {
               </li>
               <li className="mr-5">
                 <NavLink
-                  to="/about-us"
+                  to="about-us"
                   className={({ isActive }) =>
                     `  ${isActive ? "bg-indigo-700" : "bg-[#262626]"} 
                       duration-200 text-2xl  px-3 py-1 rounded-lg hover:bg-indigo-700 font-semibold   `
@@ -42,7 +42,7 @@ function HeaderSection() {
               </li>
               <li className="mr-5">
                 <NavLink
-                  to="/services"
+                  to="services"
                   className={({ isActive }) =>
                     `  ${isActive ? "bg-indigo-700" : "bg-[#262626]"} 
                       duration-200 text-2xl  px-3 py-1 rounded-lg hover:bg-indigo-700  font-semibold  `
@@ -57,12 +57,12 @@ function HeaderSection() {
                     `  ${isActive ? "bg-indigo-700" : "bg-[#262626]"} 
                     duration-200 px-3 text-2xl  py-1 rounded-lg hover:bg-indigo-700  font-semibold     `
                   }
-                  to="/contact-us"
+                  to="contact-us"
                 >
                   Contact Us
                 </NavLink>
               </li>
-              <li className="">
+              <li className="mr-5">
                 <NavLink
                   className={({ isActive }) =>
                     `  ${isActive ? "bg-indigo-700" : "bg-[#262626]"} 
@@ -71,6 +71,17 @@ function HeaderSection() {
                   to="/search"
                 >
                   Search
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className={({ isActive }) =>
+                    `  ${isActive ? "bg-indigo-700" : "bg-[#262626]"} 
+                    duration-200 px-3 text-2xl  py-1 rounded-lg hover:bg-indigo-700  font-semibold     `
+                  }
+                  to="login"
+                >
+                  Login
                 </NavLink>
               </li>
             </ul>
